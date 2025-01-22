@@ -23,13 +23,9 @@ const SignIn = () => {
             <Text className="text-primary-200">Your Ideal Home</Text>
           </Text>
 
-          <Text className="text-lg text-black-200 text-center mt-12">
-            Login to Upssstate with Google
-          </Text>
-
           <TouchableOpacity
             onPress={handleLogin}
-            className="bg-white shadow-md shadow-gray-300 rounded-md py-4 mt-5"
+            className="bg-white shadow-md shadow-gray-300 rounded-md py-4 mt-12"
           >
             <View className="flex flex-row items-center justify-center">
               <Image
