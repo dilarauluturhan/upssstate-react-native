@@ -1,11 +1,28 @@
 import React from "react";
-import { ScrollView, Text, Image, View, TouchableOpacity } from "react-native";
+import {
+  ScrollView,
+  Text,
+  Image,
+  View,
+  TouchableOpacity,
+  Alert,
+  TextInput
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "../constants/images";
 import icons from "../constants/icons";
+import { login } from "@/lib/appwrite";
 
 const SignIn = () => {
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    const result = await login();
+
+    if (result) {
+      console.log("login successful");
+    } else {
+      Alert.alert("Error", "Failed to login");
+    }
+  };
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -25,18 +42,11 @@ const SignIn = () => {
 
           <TouchableOpacity
             onPress={handleLogin}
-            className="bg-white shadow-md shadow-gray-300 rounded-md py-4 mt-12"
+            className=""
           >
-            <View className="flex flex-row items-center justify-center">
-              <Image
-                source={icons.google}
-                className="w-7 h-7"
-                resizeMode="contain"
-              />
-              <Text className="text-lg font-medium text-black-300 ml-3">
-                Continue with Google
-              </Text>
-            </View>
+            
+
+           
           </TouchableOpacity>
         </View>
       </ScrollView>
