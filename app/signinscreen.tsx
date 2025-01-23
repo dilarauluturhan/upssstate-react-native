@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ScrollView, Text, Image, View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "../constants/images";
+import { useRouter } from "expo-router";
 
 import Loading from "@/components/Loading";
 import CustomTextInput from "@/components/CustomTextInput";
@@ -9,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "@/redux/userSlice";
 
 const SignIn = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +18,15 @@ const SignIn = () => {
 
   const dispatch = useDispatch();
 
+  const handleLogin = () => {
+    try {
+      dispatch(login({ email, password }));
+
+      router.replace("/(tabs)");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView contentContainerClassName="h-full">
@@ -48,7 +59,7 @@ const SignIn = () => {
 
           <Pressable
             className="w-[85%] h-11 rounded-md bg-primary-100 mt-7 flex items-center justify-center"
-            onPress={() => dispatch(login({ email, password }))}
+            onPress={handleLogin}
           >
             <Text className="text-white text-center text-lg font-bold">
               Login
