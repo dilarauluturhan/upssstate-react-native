@@ -15,7 +15,7 @@ const CustomPressable: React.FC<CustomPressableProps> = ({
         onPress={() => handleOnpress()}
         style={({ pressed }) => [
           {
-            backgroundColor: pressed ? "#E07B39" : "#F29F58",
+            backgroundColor: pressed ? "#2973B2" : "#9ACBD0",
           },
           styles.customButton,
         ]}

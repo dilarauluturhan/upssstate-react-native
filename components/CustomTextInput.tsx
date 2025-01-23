@@ -1,7 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface CustomTextInputProps {
-  title: string;
   isSecureText: boolean;
   handleOnchangeText: (text: string) => void; // onChangeText fonksiyonu, yeni metni alır ve işlem yapar
   handleValue: string; // TextInput'un mevcut değeri
@@ -9,7 +8,6 @@ interface CustomTextInputProps {
 }
 
 const CustomTextInput: React.FC<CustomTextInputProps> = ({
-  title,
   isSecureText,
   handleOnchangeText,
   handleValue,
@@ -17,7 +15,6 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>{title}:</Text>
       <TextInput
         autoCapitalize="none"
         secureTextEntry={isSecureText}
@@ -34,7 +31,8 @@ export default CustomTextInput;
 
 const styles = StyleSheet.create({
   container: {
-    width: "75%",
+    width: "85%",
+    marginTop: 12,
   },
   textStyle: {
     alignSelf: "flex-start",

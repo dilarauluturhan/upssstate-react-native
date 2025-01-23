@@ -4,7 +4,7 @@ import React from "react";
 const Loading = () => {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color="#E07B39" />
+      <ActivityIndicator size="large" color="#2973B2" />
     </View>
   );
 };
