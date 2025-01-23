@@ -6,23 +6,13 @@ import {
   View,
   TouchableOpacity,
   Alert,
-  TextInput
+  TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "../constants/images";
-import icons from "../constants/icons";
-import { login } from "@/lib/appwrite";
 
 const SignIn = () => {
-  const handleLogin = async () => {
-    const result = await login();
-
-    if (result) {
-      console.log("login successful");
-    } else {
-      Alert.alert("Error", "Failed to login");
-    }
-  };
+  const handleLogin = async () => {};
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -43,11 +33,7 @@ const SignIn = () => {
           <TouchableOpacity
             onPress={handleLogin}
             className=""
-          >
-            
-
-           
-          </TouchableOpacity>
+          ></TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

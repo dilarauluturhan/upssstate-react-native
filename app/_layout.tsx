@@ -1,12 +1,12 @@
 import { Stack } from "expo-router";
-
+import { store } from "../redux/store";
+import { Provider } from "react-redux";
 import "./global.css";
-import GlobalProvider from "@/lib/global-provider";
 
 export default function RootLayout() {
   return (
-    <GlobalProvider>
+    <Provider store={store}>
       <Stack screenOptions={{ headerShown: false }} />;
-    </GlobalProvider>
+    </Provider>
   );
 }
