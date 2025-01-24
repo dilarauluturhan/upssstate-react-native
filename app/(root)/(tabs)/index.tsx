@@ -9,11 +9,17 @@ import { Card, FeaturedCard } from "@/components/Cards";
 import Filters from "@/components/Filters";
 import { useState, useEffect } from "react";
 
+import { useLocalSearchParams } from "expo-router";
+import NoResults from "@/components/NoResult";
+
 export default function Index() {
   const [cards, setCards] = useState([]);
   const [featured, setFeatured] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const params = useLocalSearchParams<{ query?: string }>();
+  const searchQuery = params.query ?? "";
 
   useEffect(() => {
     fetchData();
@@ -39,13 +45,21 @@ export default function Index() {
     setSelectedCategory(category);
   };
 
-  const filteredCards =
+  let filteredCards =
     selectedCategory === "All"
       ? cards
       : cards.filter(
           (item) =>
             item.category.toLowerCase() === selectedCategory.toLowerCase()
         );
+
+  if (searchQuery.trim().length > 0) {
+    filteredCards = filteredCards.filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.location.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -57,6 +71,7 @@ export default function Index() {
         contentContainerClassName="pb-32"
         columnWrapperClassName="flex gap-5 px-5"
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={<NoResults />}
         ListHeaderComponent={() => (
           <View className="px-5">
             <View className="flex flex-row items-center justify-between mt-5">

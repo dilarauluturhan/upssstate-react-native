@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, ScrollView, TouchableOpacity } from "react-native";
+import { Text, ScrollView, TouchableOpacity, View } from "react-native";
+import NoResult from "./NoResult";
 
 interface ICategory {
   id: number;
@@ -13,7 +14,11 @@ interface FiltersProps {
   onCategorySelect: (category: string) => void;
 }
 
-const Filters = ({ categories, selectedCategory, onCategorySelect }: FiltersProps) => {
+const Filters = ({
+  categories,
+  selectedCategory,
+  onCategorySelect,
+}: FiltersProps) => {
   const handleCategoryPress = (category: string) => {
     if (selectedCategory === category) {
       onCategorySelect("All");
@@ -21,6 +26,14 @@ const Filters = ({ categories, selectedCategory, onCategorySelect }: FiltersProp
       onCategorySelect(category);
     }
   };
+
+  if (!categories || categories.length === 0) {
+    return (
+      <View className="flex items-center justify-center my-3">
+        <NoResult />
+      </View>
+    );
+  }
 
   return (
     <ScrollView
