@@ -1,20 +1,58 @@
-import { Link } from "expo-router";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import axios from "axios";
 
 import images from "@/constants/images";
 import icons from "@/constants/icons";
 import Search from "@/components/Search";
 import { Card, FeaturedCard } from "@/components/Cards";
 import Filters from "@/components/Filters";
+import { useState, useEffect } from "react";
 
 export default function Index() {
+  const [cards, setCards] = useState([]);
+  const [featured, setFeatured] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const [resCards, resFeatured, resCategories] = await Promise.all([
+        axios.get("http://localhost:8000/cards"),
+        axios.get("http://localhost:8000/featuredCards"),
+        axios.get("http://localhost:8000/categories"),
+      ]);
+
+      setCards(resCards.data);
+      setFeatured(resFeatured.data);
+      setCategories(resCategories.data);
+    } catch (error) {
+      console.log("API error", error);
+    }
+  };
+
+  const onCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredCards =
+    selectedCategory === "All"
+      ? cards
+      : cards.filter(
+          (item) =>
+            item.category.toLowerCase() === selectedCategory.toLowerCase()
+        );
+
   return (
     <SafeAreaView className="bg-white h-full">
       <FlatList
-        data={[1, 2, 3, 4]}
-        renderItem={({ item }) => <Card />}
-        keyExtractor={(item) => item.toString()}
+        data={filteredCards}
+        renderItem={({ item }) => <Card data={item} />}
+        keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         contentContainerClassName="pb-32"
         columnWrapperClassName="flex gap-5 px-5"
@@ -54,9 +92,9 @@ export default function Index() {
             </View>
 
             <FlatList
-              data={[1, 2, 3]}
-              renderItem={({ item }) => <FeaturedCard />}
-              keyExtractor={(item) => item.toString()}
+              data={featured}
+              renderItem={({ item }) => <FeaturedCard data={item} />}
+              keyExtractor={(item) => item.id.toString()}
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerClassName="flex gap-5 mt-2"
@@ -74,7 +112,11 @@ export default function Index() {
                 </TouchableOpacity>
               </View>
 
-              <Filters />
+              <Filters
+                categories={categories}
+                selectedCategory={selectedCategory}
+                onCategorySelect={onCategorySelect}
+              />
             </View>
           </View>
         )}

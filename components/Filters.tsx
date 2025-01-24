@@ -1,24 +1,25 @@
-import React, { useState } from "react";
-import { router, useLocalSearchParams } from "expo-router";
+import React from "react";
 import { Text, ScrollView, TouchableOpacity } from "react-native";
 
-import { categories } from "@/constants/data";
+interface ICategory {
+  id: number;
+  title: string;
+  category: string;
+}
 
-const Filters = () => {
-  const params = useLocalSearchParams<{ filter?: string }>();
-  const [selectedCategory, setSelectedCategory] = useState(
-    params.filter || "All"
-  );
+interface FiltersProps {
+  categories: ICategory[];
+  selectedCategory: string;
+  onCategorySelect: (category: string) => void;
+}
 
+const Filters = ({ categories, selectedCategory, onCategorySelect }: FiltersProps) => {
   const handleCategoryPress = (category: string) => {
     if (selectedCategory === category) {
-      setSelectedCategory("");
-      router.setParams({ filter: "" });
-      return;
+      onCategorySelect("All");
+    } else {
+      onCategorySelect(category);
     }
-
-    setSelectedCategory(category);
-    router.setParams({ filter: category });
   };
 
   return (
@@ -27,10 +28,10 @@ const Filters = () => {
       showsHorizontalScrollIndicator={false}
       className="mt-3 mb-2"
     >
-      {categories.map((item, index) => (
+      {categories.map((item) => (
         <TouchableOpacity
+          key={item.id}
           onPress={() => handleCategoryPress(item.category)}
-          key={index}
           className={`flex flex-col items-start mr-4 px-4 py-2 rounded-full ${
             selectedCategory === item.category
               ? "bg-primary-200"
