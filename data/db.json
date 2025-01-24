@@ -1,140 +1,71 @@
 {
-    "cards": [
-      {
-        "id": 1,
-        "title": "Card 1",
-        "location": "Location 1",
-        "price": "$100",
-        "rating": 4.8,
-        "category": "house",
-        "image": "images/newYork"
-      },
-      {
-        "id": 2,
-        "title": "Card 2",
-        "location": "Location 2",
-        "price": "$200",
-        "rating": 3,
-        "category": "house",
-        "image": "images/japan"
-      },
-      {
-        "id": 3,
-        "title": "Card 3",
-        "location": "Location 3",
-        "price": "$300",
-        "rating": 2,
-        "category": "flat",
-        "image": "images/newYork"
-      },
-      {
-        "id": 4,
-        "title": "Card 4",
-        "location": "Location 4",
-        "price": "$400",
-        "rating": 5,
-        "category": "villa",
-        "image": "images/japan"
-      }
-    ],
-    "featuredCards": [
-      {
-        "id": 1,
-        "title": "Featured 1",
-        "location": "Location 1",
-        "price": "$100",
-        "rating": 4.8,
-        "image": "images/newYork",
-        "category": "house"
-      },
-      {
-        "id": 2,
-        "title": "Featured 2",
-        "location": "Location 2",
-        "price": "$200",
-        "rating": 3,
-        "image": "images/japan",
-        "category": "flat"
-      }
-    ],
-    "categories": [
-      { "id": 1, "title": "All", "category": "All" },
-      { "id": 2, "title": "Houses", "category": "House" },
-      { "id": 3, "title": "Condos", "category": "Condos" },
-      { "id": 4, "title": "Duplexes", "category": "Duplexes" },
-      { "id": 5, "title": "Studios", "category": "Studios" },
-      { "id": 6, "title": "Villas", "category": "Villa" },
-      { "id": 7, "title": "Apartments", "category": "Apartments" },
-      { "id": 8, "title": "Townhomes", "category": "Townhomes" },
-      { "id": 9, "title": "Others", "category": "Others" }
-    ],
-    "facilities": [
-      {
-        "id": 1,
-        "title": "Laundry",
-        "icon": "icons/laundry"
-      },
-      {
-        "id": 2,
-        "title": "Car Parking",
-        "icon": "icons/carPark"
-      },
-      {
-        "id": 3,
-        "title": "Sports Center",
-        "icon": "icons/run"
-      },
-      {
-        "id": 4,
-        "title": "Cutlery",
-        "icon": "icons/cutlery"
-      },
-      {
-        "id": 5,
-        "title": "Gym",
-        "icon": "icons/dumbell"
-      },
-      {
-        "id": 6,
-        "title": "Swimming pool",
-        "icon": "icons/swim"
-      },
-      {
-        "id": 7,
-        "title": "Wifi",
-        "icon": "icons/wifi"
-      },
-      {
-        "id": 8,
-        "title": "Pet Center",
-        "icon": "icons/dog"
-      }
-    ],
-    "gallery": [
-      {
-        "id": 1,
-        "image": "images/newYork"
-      },
-      {
-        "id": 2,
-        "image": "images/japan"
-      },
-      {
-        "id": 3,
-        "image": "images/newYork"
-      },
-      {
-        "id": 4,
-        "image": "images/japan"
-      },
-      {
-        "id": 5,
-        "image": "images/newYork"
-      },
-      {
-        "id": 6,
-        "image": "images/japan"
-      }
-    ]
-  }
-  
+  "cards": [
+    {
+      "id": 1,
+      "title": "Card 1",
+      "location": "Location 1",
+      "price": "$100",
+      "rating": 4.8,
+      "category": "house",
+      "image": "images/newYork"
+    },
+    {
+      "id": 2,
+      "title": "Card 2",
+      "location": "Location 2",
+      "price": "$200",
+      "rating": 3,
+      "category": "house",
+      "image": "images/japan"
+    },
+    {
+      "id": 3,
+      "title": "Card 3",
+      "location": "Location 3",
+      "price": "$300",
+      "rating": 2,
+      "category": "flat",
+      "image": "images/newYork"
+    },
+    {
+      "id": 4,
+      "title": "Card 4",
+      "location": "Location 4",
+      "price": "$400",
+      "rating": 5,
+      "category": "villa",
+      "image": "images/japan"
+    }
+  ],
+  "featuredCards": [
+    {
+      "id": 1,
+      "title": "Featured 1",
+      "location": "Location 1",
+      "price": "$100",
+      "rating": 4.8,
+      "image": "images/newYork",
+      "category": "house"
+    },
+    {
+      "id": 2,
+      "title": "Featured 2",
+      "location": "Location 2",
+      "price": "$200",
+      "rating": 3,
+      "image": "images/japan",
+      "category": "flat"
+    }
+  ],
+  "categories": [
+    { "id": 1, "title": "All", "category": "All" },
+    { "id": 2, "title": "Houses", "category": "House" },
+    { "id": 3, "title": "Condos", "category": "Condos" },
+    { "id": 4, "title": "Duplexes", "category": "Duplexes" },
+    { "id": 5, "title": "Studios", "category": "Studios" },
+    { "id": 6, "title": "Villas", "category": "Villa" },
+    { "id": 7, "title": "Apartments", "category": "Apartments" },
+    { "id": 8, "title": "Townhomes", "category": "Townhomes" },
+    { "id": 9, "title": "Others", "category": "Others" }
+  ]
+}
