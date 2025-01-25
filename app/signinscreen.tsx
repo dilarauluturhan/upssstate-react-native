@@ -21,12 +21,12 @@ const SignIn = () => {
   const handleLogin = () => {
     try {
       dispatch(login({ email, password }));
-
       router.replace("/(tabs)");
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView contentContainerClassName="h-full">
@@ -65,6 +65,13 @@ const SignIn = () => {
               Login
             </Text>
           </Pressable>
+
+          <View className="flex flex-row items-center justify-center gap-1.5 mt-3">
+            <Text className="text-black-300 font-medium">
+              Don't have an account?
+            </Text>
+            <Text className="text-primary-100 font-semibold">Sign up</Text>
+          </View>
 
           {isLoading ? <Loading /> : null}
         </View>
